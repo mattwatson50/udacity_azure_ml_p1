@@ -22,11 +22,11 @@ This data contains information about people and their banking history and whethe
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
-The pipeline architecture contains a few major steps. First we ingest the data into an Azure Dataset. Then we run a HyperDrive experiment on it with random sampling. Once that is complete we look for the best performing model. To benchmark we then run an AutoML experiment on the same data, saving that model out via the Azure ONNX converter. We are then comparing the different models that were generated to understand the differences and choose the best one.
+The pipeline architecture contains a few major steps. First we ingest the data into an Azure Dataset. Then we run a HyperDrive experiment on it with random sampling logistic regression. Once that is complete we look for the best performing model. To benchmark we then run an AutoML experiment on the same data, saving that model out via the Azure ONNX converter. We are then comparing the different models that were generated to understand the differences and choose the best one.
 
 **What are the benefits of the parameter sampler you chose?**
 
-I chose some standard parameters for random sampling with logistic regression. C, solver, and penalty. C is the regularization parameter that controls the inverse of the regularization strength. Solver helps to optimize the fit for the logistic regression model. Penalty provides the type of regularization to be used.
+I chose some standard parameters for random sampling with SciKit Learn logistic regression. C, solver, penalty, and max iter C is the regularization parameter that controls the inverse of the regularization strength. Solver helps to optimize the fit for the logistic regression model. Penalty provides the type of regularization to be used. Max iter is the number of iterations to use.
 
 **What are the benefits of the early stopping policy you chose?**
 
