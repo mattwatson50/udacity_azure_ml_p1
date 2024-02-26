@@ -55,7 +55,7 @@ def main():
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
     url_path = 'https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv'
-    ds = Dataset.File.from_file(path=url_path)
+    ds = TabularDatasetFactory.from_delimited_files(path=url_path)
     
     x, y = clean_data(ds)
 
