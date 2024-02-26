@@ -15,16 +15,18 @@ This model is then compared to an Azure AutoML run.
 ## Summary
 **In 1-2 sentences, explain the problem statement: e.g "This dataset contains data about... we seek to predict..."**
 
-This data contains information about people and their banking history and whether a marking campaign was successful for them. It can be used as a way to interpret whether or not a bank should spend resources marketing towards each individual.
+This data contains information about people and their banking history and whether a marketing campaign was successful for them. It can be used as a way to interpret whether or not a bank should spend resources marketing towards each individual.
 
 **In 1-2 sentences, explain the solution: e.g. "The best performing model was a ..."**
 
-The best performing model was the automl model a VotingEnsemble model.
+The best performing model was the automl model, VotingEnsemble model.
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
-The pipeline architecture contains a few major steps. First we ingest the data into an Azure Dataset. Then we run a HyperDrive experiment on it with random sampling logistic regression. Once that is complete we look for the best performing model. To benchmark we then run an AutoML experiment on the same data, saving that model out via the Azure ONNX converter. We are then comparing the different models that were generated to understand the differences and choose the best one.
+The pipeline architecture contains a few major steps. First we ingest the data into an Azure Dataset. We train said data to prep it for model experiments. Then we run a HyperDrive experiment on it with random sampling logistic regression with a sampling of hyper parameters. We use a train.py script to do so with sklearn. Once that is complete we look for the best performing model. 
+
+To benchmark we then run an AutoML experiment on the same data. We train the data using our original training script to prep it for the AutoML run. Once it's complete we then save that model out via the Azure ONNX converter. We are then comparing the different models that were generated to understand the differences and choose the best one.
 
 **What are the benefits of the parameter sampler you chose?**
 
@@ -48,7 +50,3 @@ There was not a huge difference between the two models. The hyperdrive model had
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
 Running more hyperdrive experiments with different hyperparameters could yield better results. I would suggest performing more hyperdrive experiments instead of just accepting AutoML as the best answer. We could also supply AutoML with more chances to run as well to see if it could yield better results.
-
-## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
